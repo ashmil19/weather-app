@@ -25,20 +25,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       final _result =
           await _weatherService.getWeatherData(cityName: event.cityName);
 
-      // final _temp = _result.main.temp - 273.15;
-      // final _humidity = _result.main.humidity;
-      // final _wind = _result.wind.speed;
-
-      // emit(WeatherState(
-      //   isLoading: false,
-      //   isError: false,
-      //   result: _result,
-      //   name: _result.name,
-      //   temp: _temp.toInt(),
-      //   humidity: _humidity,
-      //   wind: _wind,
-      // ));
-
       final _state = _result.fold(
         (MainFailure fail) {
           return const WeatherState(
